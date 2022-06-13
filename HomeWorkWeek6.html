@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+   <link href="styles.css" />
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Macondo&display=swap"
+    rel="stylesheet" />
+   <body>
+    <div class="content">
+        <div class="container defaultPlace">
+          <div class="row">
+          <div class="search">
+            <form class="input-group mb-3 search-tab"
+            id="search-form">
+              <input
+              type="search"
+              id="site-search"
+              class="form-control shadow"
+              autofocus="on"
+              placeholder="Enter a sity"
+              autocomplete="off"
+              />
+              <input
+              type="submit"
+              value="🔍"
+              id="button"
+              class="btn btn-outline-light search-button shadow"
+              />
+              <input
+            class="btn btn-outline-light search-button shadow"
+            type="submit"
+            value="Current Location"
+            id="currentLocation"
+            />
+          </form>
+          </div>
+          <div class="card-box">
+          <div class="row">
+      <div class="Skogsby col-4">
+        <h1 id="city">Kyiv</h1>
+        <div id="current-date">Weekday</br>
+        May 4, 11:09</br></div>
+        <span class="temp">
+          <span id="valueTemp">+8  </span>
+          <a href="#" id="link-celsius">℃</a> /
+          <a href="#" id="link-fahrenheit">℉</a></span>
+      </div>
+      
+      <p class="emoji col-4">
+          <span class="sun">☀️</span>
+        </br><span class="sunny">Sunny</span>
+      </p>
+      <p class="specifics col-4">
+        Humidity 9%</br>
+        Sunrise 4:20</br>
+        Sunset 21:32</br>
+        Wind 4m/s
+      </p>
+      </div>
+      </div>
+    </div>
+          
+      <div class="container days">
+          <div class="row">
+          
+          <div class="col-sm">Thursday </br>🌤️</br>23° /<span class=nightTemp>20°</span></div>
+          <div class="col-sm">Friday </br>🌤️</br> 24° /<span class=nightTemp>21°</span></div>
+          <div class="col-sm">Saturday </br>☀️</br>25° /<span class=nightTemp>22°</span></div>
+          <div class="col-sm">Sunday</br>☀️</br>26° /<span class=nightTemp>23°</span></div>
+          <div class="col-sm">Monday </br>☀️</br>25° /<span class=nightTemp>22°</span></div>
+          <div class="col-sm">Tuesday</br>🌤️</br>24° /<span class=nightTemp>21°</span></div>
+         
+          </div>
+      </div>
+      </div>
+    </div>
+    <div class="footer">Coded by Tetiana Korenivska ✌</div>
+    <!--<script src="src/index.js"></script>-->
+    <script>
+        let currentDate = document.querySelector("#current-date");
+let now = new Date();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+let day = days[now.getDay()];
+let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+currentDate.innerHTML = `${day} ${hours}:${minutes}`;
+
+function searchEngine(city) {
+  let apiKey = `8740228fba90a854cea90d4f0155d9e9`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayData);
+}
+
+function search(event) {
+  event.preventDefault();
+  let city = document.querySelector("#site-search").value;
+  searchEngine(city);
+}
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
+
+function convertToC(event) {
+  event.preventDefault();
+  let celsius = document.querySelector("#valueTemp");
+  celsius.innerHTML = +8;
+}
+let temperatureC = document.querySelector("#link-celsius");
+temperatureC.addEventListener("click", convertToC);
+
+function convertToF(event) {
+  event.preventDefault();
+  let fahrenheit = document.querySelector("#valueTemp");
+  fahrenheit.innerHTML = Math.round((9 * 8 + 160) / 5);
+}
+let temperatureF = document.querySelector("#link-fahrenheit");
+temperatureF.addEventListener("click", convertToF);
+
+function showPosition(position) {
+  let apiKey = `8740228fba90a854cea90d4f0155d9e9`;
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayData);
+}
+console.log(showPosition);
+
+function displayData(response) {
+  let cityName = response.data.name;
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = cityName;
+
+  console.log(response.data);
+  let temp = Math.round(response.data.main.temp);
+  let temperature = document.querySelector("#valueTemp");
+  temperature.innerHTML = `${temp}`;
+}
+
+function showCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+let currentLocation = document.querySelector("#currentLocation");
+currentLocation.addEventListener("click", showCurrentLocation);
+</script>
+  </body>
+  </html>

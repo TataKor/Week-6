@@ -1,0 +1,117 @@
+body {
+font-family: "Macondo", cursive;
+background-image: url(https://static.make.ua/catalog/07/flowers-0000664__1408536135__615.jpg);
+background-size: cover;
+display: block;
+padding: 80px 80px 60px;
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.search-tab {
+max-width: 860px;
+margin: 0 auto;
+}
+
+button.search-button {
+background-color: rgba(166, 150, 200, 0.5);
+}
+div.card-box {
+color: white;
+text-align: center;
+border: 1px solid rgba(255, 255, 255, 0.411);
+border-radius: 8px;
+padding: 30px 100px 10px 90px;
+margin: 0 auto;
+max-width: 960px;
+background-color: rgba(153, 65, 175, 0.425);
+}
+div.search {
+margin: 0 auto;
+max-width: 860px;
+}
+#search-form {
+padding: 5px 5px 5px 5px;
+}
+.Skogsby,
+.emoji,
+.specifics {
+text-align: center;
+padding-bottom: 80px;
+}
+#link-celsius,
+#link-fahrenheit {
+font-size: 25px;
+color: white;
+text-decoration: none;
+}
+.Skogsby {
+font-size: 20px;
+padding-top: 30px;
+}
+.specifics {
+font-size: 20px;
+padding-top: 30px;
+}
+.sun {
+font-size: 80px;
+display: block;
+margin: 0 auto;
+}
+.emoji {
+line-height: 220%;
+padding-top: 70px;
+display: block;
+margin: 0 auto;
+}
+.sunny {
+font-style: italic;
+font-size: 30px;
+}
+.temp {
+font-size: 25px;
+}
+.nightTemp {
+color: white;
+padding-left: 5px;
+}
+.days {
+text-align: center;
+color: white;
+display: block;
+line-height: 40px;
+font-size: 18px;
+}
+#button {
+border: 1px solid white;
+border-radius: 6px;
+font-size: 20px;
+}
+#button:hover {
+font-weight: 700;
+background: rgba(155, 89, 216, 0.726);
+border: 1px solid white;
+border-radius: 6px;
+}
+#site-search {
+border: none;
+border-radius: 6px;
+font-size: 20px;
+width: 375px;
+}
+#currentLocation {
+border: 1px solid white;
+border-radius: 6px;
+font-size: 20px;
+background-color: transparent;
+}
+#currentLocation:hover {
+transition: 150px ease-in-out;
+background-color: white;
+}
+.footer {
+text-align: center;
+font-size: 20px;
+padding-top: 55px;
+color: white;
+}
