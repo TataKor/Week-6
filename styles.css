@@ -3,9 +3,17 @@ font-family: "Macondo", cursive;
 background-image: url(https://static.make.ua/catalog/07/flowers-0000664__1408536135__615.jpg);
 background-size: cover;
 display: block;
+margin: 0 auto;
 padding: 80px 80px 60px;
 max-width: 1000px;
-margin: 0 auto;
+}
+
+div.content {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
 }
 
 .search-tab {
