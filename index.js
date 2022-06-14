@@ -70,7 +70,7 @@ function displayData(response) {
   let temperature = document.querySelector("#valueTemp");
   temperature.innerHTML = `${temp}`;
 
-  let descriptionElement = document.querySelector("sunny");
+  let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
 }
 
