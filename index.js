@@ -61,15 +61,17 @@ function showPosition(position) {
 console.log(showPosition);
 
 function displayData(response) {
-  console.log(response.data.main);
   let cityName = response.data.name;
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = cityName;
 
-  
+  console.log(response.data);
   let temp = Math.round(response.data.main.temp);
   let temperature = document.querySelector("#valueTemp");
   temperature.innerHTML = `${temp}`;
+
+  let descriptionElement = document.querySelector("#sunny");
+  descriptionElement.innerHTML = response.data.weather[0].description;
 }
 
 function showCurrentLocation() {

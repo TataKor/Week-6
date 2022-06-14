@@ -76,6 +76,10 @@ margin: 0 auto;
 font-style: italic;
 font-size: 30px;
 }
+.sunny::first-letter {
+text-transform: capitalize;
+}
+
 .temp {
 font-size: 25px;
 }
