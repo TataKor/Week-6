@@ -52,22 +52,28 @@
         <h1 id="city">Kyiv</h1>
         <div id="current-date">Weekday</br>
         May 4, 11:09</br></div>
-        <span class="temp">
-          <span id="valueTemp">+8  </span>
+        <div class="temp">
+          <div id="valueTemp">+8  </div>
           <a href="#" id="link-celsius">℃</a> /
-          <a href="#" id="link-fahrenheit">℉</a></span>
+          <a href="#" id="link-fahrenheit">℉</a></div>
       </div>
-      
-      <p class="emoji col-4">
-          <span class="sun">☀️</span>
-        </br> <span id="description">Sunny</span>
-      </p>
-      <p class="specifics col-4">
-        Humidity 9%</br>
-        Sunrise 4:20</br>
-        Sunset 21:32</br>
-        Wind 4m/s
-      </p>
+      <div class="emoji col-4">
+          <div class="sun">
+            <img
+                  src="https://openweathermap.org/img/wn/01d@2x.png"
+                  alt="Weather Icon"
+                  class="src icon"
+                  id="icon"
+                />
+          </div>
+          <div id="description">Sunny</div>
+      </div>
+      <div class="specifics col-4">
+        Sunrise: <span id="sunrise">4:20</span></br>
+        Sunset: <span id="sunset">21:20</span></br>
+        Humidity: <span id="humidity">20</span> %</br>
+        Wind: <span id="wind">3</span> km/h</br>
+      </div>
       </div>
       </div>
     </div>

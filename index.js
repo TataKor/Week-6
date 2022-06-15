@@ -38,16 +38,15 @@ searchForm.addEventListener("submit", search);
 function convertToC(event) {
   event.preventDefault();
   let celsius = document.querySelector("#valueTemp");
-  celsius.innerHTML = +8;
+  celsius.innerHTML = +8; 
 }
 let temperatureC = document.querySelector("#link-celsius");
 temperatureC.addEventListener("click", convertToC);
 
 function convertToF(event) {
-  event.preventDefault();
-  let fahrenheit = document.querySelector("#valueTemp");
-  fahrenheit.innerHTML = Math.round((9 * 8 + 160) / 5);
-}
+event.preventDefault();
+let fahrenheit = document.querySelector("#valueTemp");
+fahrenheit.innerHTML = Math.round((8 *9) / 5 + 32); }
 let temperatureF = document.querySelector("#link-fahrenheit");
 temperatureF.addEventListener("click", convertToF);
 
@@ -70,8 +69,26 @@ function displayData(response) {
   let temperature = document.querySelector("#valueTemp");
   temperature.innerHTML = `${temp}`;
 
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src",
+  `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.weather[0].description;
+  descriptionElement.innerHTML = response.data.weather[0].main; //weather[0].description =two words//
+
+  let sunriseElement = document.querySelector("#sunrise");
+  let sunriseTime = new Date(response.data.sys.sunrise * 1000);
+  sunriseElement.innerHTML = ` ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, "0")}`;
+  
+  let sunsetElement = document.querySelector("#sunset");
+  let sunsetTime = new Date(response.data.sys.sunset * 1000);
+  sunsetElement.innerHTML = ` ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, "0")}`;
+
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
+
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function showCurrentLocation() {
