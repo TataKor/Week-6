@@ -38,15 +38,17 @@ searchForm.addEventListener("submit", search);
 function convertToC(event) {
   event.preventDefault();
   let celsius = document.querySelector("#valueTemp");
-  celsius.innerHTML = +8; 
+  celsius.innerHTML = -32;
 }
 let temperatureC = document.querySelector("#link-celsius");
 temperatureC.addEventListener("click", convertToC);
 
 function convertToF(event) {
-event.preventDefault();
-let fahrenheit = document.querySelector("#valueTemp");
-fahrenheit.innerHTML = Math.round((8 *9) / 5 + 32); }
+  event.preventDefault();
+  let fahrenheit = document.querySelector("#valueTemp");
+  fahrenheit.innerHTML = (`${celsius}` *5 /9);
+}
+
 let temperatureF = document.querySelector("#link-fahrenheit");
 temperatureF.addEventListener("click", convertToF);
 
@@ -97,3 +99,6 @@ function showCurrentLocation() {
 
 let currentLocation = document.querySelector("#currentLocation");
 currentLocation.addEventListener("click", showCurrentLocation);
+
+let currentButton = document.querySelector("#local");
+currentButton.addEventListener("click", getLocal);
