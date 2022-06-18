@@ -7,7 +7,7 @@ let days = [
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
 ];
 let day = days[now.getDay()];
 let hours = now.getHours();
@@ -35,10 +35,12 @@ function search(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
+let celsiusTemp = null;
+
 function convertToC(event) {
   event.preventDefault();
   let celsius = document.querySelector("#valueTemp");
-  celsius.innerHTML = -32;
+  celsius.innerHTML = Math.round(celsiusTemp);
 }
 let temperatureC = document.querySelector("#link-celsius");
 temperatureC.addEventListener("click", convertToC);
@@ -46,7 +48,7 @@ temperatureC.addEventListener("click", convertToC);
 function convertToF(event) {
   event.preventDefault();
   let fahrenheit = document.querySelector("#valueTemp");
-  fahrenheit.innerHTML = (`${celsius}` *5 /9);
+  fahrenheit.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
 }
 
 let temperatureF = document.querySelector("#link-fahrenheit");
@@ -72,25 +74,33 @@ function displayData(response) {
   temperature.innerHTML = `${temp}`;
 
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute("src",
-  `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].main; //weather[0].description =two words//
 
   let sunriseElement = document.querySelector("#sunrise");
   let sunriseTime = new Date(response.data.sys.sunrise * 1000);
-  sunriseElement.innerHTML = ` ${sunriseTime.getHours()}:${String(sunriseTime.getMinutes()).padStart(2, "0")}`;
-  
+  sunriseElement.innerHTML = ` ${sunriseTime.getHours()}:${String(
+    sunriseTime.getMinutes()
+  ).padStart(2, "0")}`;
+
   let sunsetElement = document.querySelector("#sunset");
   let sunsetTime = new Date(response.data.sys.sunset * 1000);
-  sunsetElement.innerHTML = ` ${sunsetTime.getHours()}:${String(sunsetTime.getMinutes()).padStart(2, "0")}`;
+  sunsetElement.innerHTML = ` ${sunsetTime.getHours()}:${String(
+    sunsetTime.getMinutes()
+  ).padStart(2, "0")}`;
 
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  celsiusTemp = response.data.main.temp;
 }
 
 function showCurrentLocation() {
