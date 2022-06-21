@@ -54,6 +54,12 @@ font-size: 25px;
 color: white;
 text-decoration: none;
 }
+
+#link-celsius:hover,
+#link-fahrenheit:hover {
+color: grey;
+}
+
 .Skogsby {
 font-size: 20px;
 padding-top: 30px;
@@ -125,7 +131,7 @@ border: 1px solid rgba(255, 255, 255, 0.411);
 border-radius: 8px;
 padding: 10px 30px 30px 30px;
 margin: 0 auto;
-max-width: 598px;
+max-width: 595px;
 background-color: rgba(153, 65, 175, 0.425);
 }
 .weather-forecast-date {
