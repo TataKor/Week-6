@@ -20,10 +20,37 @@ if (minutes < 10) {
 }
 currentDate.innerHTML = `${day} ${hours}:${minutes}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  daysforEach(function(day) {
+    forecastHTML = forecastHTML +
+    `
+    <div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+      <img src="https://openweathermap.org/img/wn/01d@2x.png"
+      alt=""
+      width="42"/>
+      <div class="weather-forecast-temperatures">
+        <span class="weather-forecast-temperatures-max">
+          18° </span>
+          <span class="weather-forecast-temperatures-min">
+            12° </span>
+      </div>
+    </div>
+   `;
+  });
+        forecastHTML = forecastHTML + `</div>`;
+        forecastElement.innerHTML = forecastHTML;        
+}
+
 function searchEngine(city) {
   let apiKey = `8740228fba90a854cea90d4f0155d9e9`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayData);
+  displayForecast();
 }
 
 function search(event) {
