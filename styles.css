@@ -1,6 +1,6 @@
 body {
 font-family: "Macondo", cursive;
-background-image: url(https://static.make.ua/catalog/07/flowers-0000664__1408536135__615.jpg);
+background-image: url(https://www.look.com.ua/large/201209/21755.jpg);
 background-size: cover;
 display: block;
 margin: 0 auto;
@@ -22,9 +22,7 @@ max-width: 860px;
 margin: 0 auto;
 }
 
-button.search-button {
-background-color: rgba(166, 150, 200, 0.5);
-}
+
 div.card-box {
 color: white;
 text-align: center;
@@ -35,6 +33,7 @@ margin: 0 auto;
 max-width: 960px;
 background-color: rgba(153, 65, 175, 0.425);
 }
+
 div.search {
 margin: 0 auto;
 max-width: 860px;
@@ -86,13 +85,25 @@ font-size: 25px;
 color: white;
 padding-left: 5px;
 }
-.days {
-text-align: center;
-color: white;
-display: block;
-line-height: 40px;
-font-size: 18px;
+
+.weather-forecast {
+    margin-top: 20px;
+    text-align: center;
 }
+
+.weather-forecast-date {
+font-size: 18px;
+color: white;
+}
+
+.weather-forecast-temperatures {
+    font-size: 13px;
+}
+
+.weather-forecast-temperatures-min {
+opacity: 0.6;
+}
+
 #button {
 border: 1px solid white;
 border-radius: 6px;
@@ -100,7 +111,7 @@ font-size: 20px;
 }
 #button:hover {
 font-weight: 700;
-background: rgba(155, 89, 216, 0.726);
+background: white;
 border: 1px solid white;
 border-radius: 6px;
 }
